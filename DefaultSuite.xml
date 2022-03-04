@@ -9,7 +9,6 @@
     <test name="DemoQATeodora">
         <parameter name="browserName" value="firefox"/>
         <classes>
-            <class name="SignInTest"/>
             <class name="SearchWikipedia"/>
             <class name="BaseTest"/>
         </classes>
