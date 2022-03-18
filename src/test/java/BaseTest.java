@@ -4,6 +4,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.ITestResult;
@@ -47,6 +48,11 @@ public class BaseTest {
             WebDriverManager.firefoxdriver().setup();
             FirefoxOptions firefoxOptions = new FirefoxOptions().setLogLevel(java.util.logging.Level.OFF);
             webDriver = new FirefoxDriver(firefoxOptions);
+        }
+
+        if (browserName.equalsIgnoreCase("edge")) {
+            WebDriverManager.edgedriver().setup();
+            webDriver = new EdgeDriver();
         }
         Log.info("New browser opened");
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
