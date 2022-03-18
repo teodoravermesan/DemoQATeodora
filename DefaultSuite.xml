@@ -7,7 +7,7 @@
         <listener class-name="listeners.CustomReports"/>
     </listeners>
     <test name="DemoQATeodora">
-        <parameter name="browserName" value="firefox"/>
+        <parameter name="browserName" value="chrome"/>
         <classes>
             <class name="BaseTest"/>
             <class name="SignInTest"/>
