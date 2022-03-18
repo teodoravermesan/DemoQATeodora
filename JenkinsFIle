@@ -1,0 +1,29 @@
+  pipeline {
+    agent any
+
+    tools {
+        maven "TestMaven"
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                checkout scm
+
+            }
+        }
+        
+            stage('Test') {
+            steps {
+                bat "mvn -Dmaven.test.failure.ignore=true clean package"
+            }
+
+            post {
+                success {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'target/*.jar'
+                }
+            }
+        }
+    }
+}
