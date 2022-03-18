@@ -39,7 +39,7 @@ public class BaseTest {
     @Parameters("browserName")
     @BeforeMethod(alwaysRun = true)
     public void setUp(String browserName) {
-        Log.info("Opening a browser");
+        Log.info("Opening a browser: " + browserName);
         if (browserName.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
             webDriver = new ChromeDriver();
@@ -48,7 +48,7 @@ public class BaseTest {
             FirefoxOptions firefoxOptions = new FirefoxOptions().setLogLevel(java.util.logging.Level.OFF);
             webDriver = new FirefoxDriver(firefoxOptions);
         }
-        Log.info("New browser opened");
+        Log.info("New browser opened:" + browserName);
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Log.info("Implicit wait applied on the driver for 10 seconds");
         webDriver.manage().deleteAllCookies();
